@@ -6,7 +6,6 @@ switch_d = 10.7+1 * r;
 led_d = 5+0.5 * r;
 
 /* [Geral] */
-Print = "True"; // [True,False]
 // Printer XY Dimensional Error
 printerErrorMargin = 0.5;
 /* [Dimensions] */
@@ -47,15 +46,9 @@ TextCover1 = ""; //lid
 TextCover2 = ""; //lid line 2
 
 
-if(Print == "True"){
-    /*box();*/
-    boxWithHoles();
-    translate([-boxSizeDepth-1,0,0]) scale([.95,1,.95]) cover();
-}else{
-    //box();
-    boxWithHoles();
-    translate([printerErrorMargin/2,0,boxSizeHeight-coverThickness]) cover();
-}
+boxWithHoles();
+translate([-boxSizeDepth-1,0,0]) scale([.95,1,.95]) cover();
+
 
 module boxWithHoles(){
   difference(){

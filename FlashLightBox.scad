@@ -49,6 +49,7 @@ TextCover2 = ""; //lid line 2
 boxWithHoles();
 translate([-boxSizeDepth-1,0,0]) scale([.95,1,.95]) cover();
 
+batteryHolder();
 
 module boxWithHoles(){
   difference(){
@@ -173,3 +174,14 @@ module CreateText(Text, Size, RotX, RoY, RotZ){
         linear_extrude(height=TextHeight)
             text(Text,Size);
 }
+
+module batteryHolder(){
+  w = 17.12;
+  d = 57.24;
+  h = 14.72;
+  
+  x = boxSizeDepth*.5;
+  y = (boxWallThickness + d * .5) + 50 ;
+  z = boxWallThickness + h * .5;
+  translate([x,y,z]) cube([w,d,h], center=true);
+  }

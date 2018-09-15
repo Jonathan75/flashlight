@@ -1,0 +1,27 @@
+flashlight box5 with Twitter
+
+Summary
+Customized version of http://www.thingiverse.com/thing:1755428
+
+Created with Customizer! http://www.thingiverse.com/apps/customizer/run?thing_id=1755428
+
+Instructions
+Using the following options:
+
+printerErrorMargin = 0.5
+boxSizeWidth = 120
+boxSizeHeight = 25
+boxSizeDepth = 25
+boxWallThickness = 4
+coverThickness = 4
+
+
+LateralFontSize = 7
+TextHeight = 0.4
+TextCover2 =
+TextCover1 = @Jonathan75
+TextLateral2 =
+TextLateral1 =
+Print = True
+TextFront =
+TextBack =

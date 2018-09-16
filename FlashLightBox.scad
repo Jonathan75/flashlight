@@ -1,6 +1,7 @@
+// original design  http://www.thingiverse.com/thing:1755428 
 t = .75;
 r = 1.057;
-switch_w = 5.9+1 * r;
+switch_w = 5.9 * r;
 switch_d = 10.7+1 * r;
 
 led_d = 5+0.5 * r;
@@ -10,19 +11,11 @@ led_d = 5+0.5 * r;
 printerErrorMargin = 0.5;
 /* [Dimensions] */
 // Box side size (Y)
-boxSizeWidth  = 55;
-boxSizeHeight = 20;
-// Face of tthe box (where cover slides in) (X)
+// Face of the box (where cover slides in) (X)
 boxSizeDepth  = 35;
 boxWallThickness = 1.5;
-coverThickness = 2;
 /* [Text] */
-TextLateral1 = "Allen Screw";
-TextLateral2 = "Metric 3x10";
 // Zero to AUTO
-LateralFontSize=7;
-TextFront = "";
-TextBack = "";
 
 TextCover1 = " A M3x10";
 TextCover2 = "";
@@ -33,10 +26,10 @@ $fn = 50;
 diffMargin = 0.01;
 
 printerErrorMargin = 0.5;
-boxSizeWidth = 120;
+boxWallThickness = 2;
+boxSizeWidth= 120;
 boxSizeHeight = 27-4;
-boxSizeDepth = 27-4;
-boxWallThickness = 4-2;
+boxSizeDepth = 17.12 + 2 + 2.5; //batteryHolderWidth = 17.12 ;
 coverThickness = 4;
 LateralFontSize=10;
 TextHeight = 0.5;
@@ -47,9 +40,9 @@ TextCover2 = ""; //lid line 2
 
 
 boxWithHoles();
-translate([-boxSizeDepth-1,0,0]) scale([.95,1,.95]) cover();
+translate([-boxSizeDepth-1,0,0]) scale([.95,1,.99]) cover();
 
-batteryHolder();
+//batteryHolder();
 
 module boxWithHoles(){
   difference(){
@@ -60,8 +53,8 @@ module boxWithHoles(){
       ledHole();
     }
   }
-  switch(0.7);
-  ledHole(0.7);
+  switch(0.9);
+  ledHole(0.9);
 }
 
 module ledHole(s=1){
@@ -179,6 +172,8 @@ module batteryHolder(){
   w = 17.12;
   d = 57.24;
   h = 14.72;
+  
+  // how wide? 17.12 + wall
   
   x = boxSizeDepth*.5;
   y = (boxWallThickness + d * .5) + 50 ;

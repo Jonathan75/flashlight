@@ -30,8 +30,8 @@ printerErrorMargin = 0.5;
 boxWallThickness = 2;
 // AAA box 58.05x16.58x13.59
 boxSizeWidth=  58.05 + 20;
-boxSizeHeight = 14 + 10; //13.59 battery holder height
-boxSizeDepth = 16.58  + 4; 
+boxSizeHeight = 14 + 8; //13.59 battery holder height
+boxSizeDepth = 16.58  + 4.5; 
 coverThickness = 4;
 LateralFontSize=6;
 TextHeight = 0.5;

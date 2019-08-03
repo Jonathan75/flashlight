@@ -30,8 +30,8 @@ printerErrorMargin = 0.5;
 boxWallThickness = 2;
 // AAA box 58.05x16.58x13.59
 boxSizeWidth=  58.05 + 20;
-boxSizeHeight = 14; //13.59 battery holder height
-boxSizeDepth = 16.58  + 2; 
+boxSizeHeight = 14 + 10; //13.59 battery holder height
+boxSizeDepth = 16.58  + 4; 
 coverThickness = 4;
 LateralFontSize=6;
 TextHeight = 0.5;
@@ -40,9 +40,10 @@ TextLateral2 = ""; //side line 2
 TextCover1 = ""; //lid
 TextCover2 = ""; //lid line 2
 
-difference(){
-    translate([-5,60,0]) #cube([30,5,20]);
+ intersection(){
+    translate([-4,60,0]) cube([30,5,30]);
     boxWithHoles();
+    
   }
 
 //translate([-boxSizeDepth-1,0,0]) cover(); //scale([.95,1,.99])

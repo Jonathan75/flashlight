@@ -29,9 +29,9 @@ diffMargin = 0.01;
 printerErrorMargin = 0.5;
 boxWallThickness = 2;
 // AAA box 58.05x16.58x13.59
-boxSizeWidth=  58.05 + 20;
-boxSizeHeight = 14 + 8; //13.59 battery holder height
-boxSizeDepth = 16.58  + 4.5; 
+boxSizeWidth=  58.05 + 24;
+boxSizeHeight = 14 + 6; //13.59 battery holder height
+boxSizeDepth = 16.58 + 4.04; 
 coverThickness = 4;
 LateralFontSize=6;
 TextHeight = 0.5;
@@ -40,14 +40,13 @@ TextLateral2 = ""; //side line 2
 TextCover1 = ""; //lid
 TextCover2 = ""; //lid line 2
 
- intersection(){
-    translate([-4,60,0]) cube([30,5,30]);
-    boxWithHoles();
-    
-  }
 
-//translate([-boxSizeDepth-1,0,0]) cover(); //scale([.95,1,.99])
+//intersection(){
+//translate([0,30,0]) cube([25,10,20]);  
+//}
+boxWithHoles();
 
+translate([-boxSizeDepth-1,0,0]) cover(); //scale([.95,1,.99])
 //batteryHolder();
 
 module boxWithHoles(){
@@ -65,8 +64,9 @@ module boxWithHoles(){
 
 module ledHole(s=1){
   bwt = boxWallThickness*0.5;
-  x = (boxSizeHeight-bwt) * 0.5;
-  translate([x,4.5-2,x]) rotate([90,0,0]) scale([s,s,s]) cylinder(d=led_d,h=boxWallThickness*1.5);
+  z = (boxSizeHeight-bwt) * 0.5;
+  x = (boxSizeDepth) * 0.5;
+  translate([x,4.5-2,z]) rotate([90,0,0]) scale([s,s,s]) cylinder(d=led_d,h=boxWallThickness*1.5);
 }
 
 module switch(s=1){
@@ -168,21 +168,21 @@ module coverCutCylinder(d,h){
                  h=h);
 }
 module CreateText(Text, Size, RotX, RoY, RotZ){
-    color("blue")
+  color("blue")
     rotate(a=[RotX, RoY, RotZ])
         linear_extrude(height=TextHeight)
             text(Text,Size);
 }
 
 module batteryHolder(){
-  w = 17.12;
-  d = 57.24;
-  h = 14.72;
+  // AAA box 16.58x58.05x13.59
+  w = 16.58;
+  d = 58.05;
+  h = 13.59;
   
   // how wide? 17.12 + wall
-  
   x = boxSizeDepth*.5;
   y = (boxWallThickness + d * .5) + 50 ;
   z = boxWallThickness + h * .5;
-  translate([x,y,z]) cube([w,d,h], center=true);
+  translate([x,52,z]) color("blue") cube([w,d,h], center=true);
   }

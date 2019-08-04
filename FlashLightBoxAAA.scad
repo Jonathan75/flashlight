@@ -1,9 +1,11 @@
 // original design  http://www.thingiverse.com/thing:1755428 
 // Triple A Battery holder version
 // AAA box 16.58x58.05x13.59
+debug = false;
+
 t = .75;
 r = 1.057;
-switch_w = 5.9 * r;
+switch_w = 5.9 + 0.2;
 switch_d = 10.7+1 * r;
 
 led_d = 5+0.5 * r;
@@ -28,26 +30,30 @@ diffMargin = 0.01;
 
 printerErrorMargin = 0.5;
 boxWallThickness = 2;
-// AAA box 58.05x16.58x13.59
+// AAA box 58.05 x 13.14 x 14.65
 boxSizeWidth=  58.05 + 24;
-boxSizeHeight = 14 + 6; //13.59 battery holder height
-boxSizeDepth = 16.58 + 4.04; 
+boxSizeHeight = 20; 
+boxSizeDepth = 13.14 + 4.04; 
 coverThickness = 4;
 LateralFontSize=6;
 TextHeight = 0.5;
-TextLateral1 = "@Jonathan75"; //side
+TextLateral1 = " @Jonathan75"; //side
 TextLateral2 = ""; //side line 2
 TextCover1 = ""; //lid
 TextCover2 = ""; //lid line 2
 
+if (debug) {
+    intersection(){
+      translate([0,5,0]) cube([25,10,20]);  
+      boxWithHoles();
+    }
+  //batteryHolder();
+} else {
+    boxWithHoles();    
+    translate([-boxSizeDepth-1,0,0]) cover(); //scale([.95,1,.99])
+}
 
-//intersection(){
-//translate([0,30,0]) cube([25,10,20]);  
-//}
-boxWithHoles();
 
-translate([-boxSizeDepth-1,0,0]) cover(); //scale([.95,1,.99])
-//batteryHolder();
 
 module boxWithHoles(){
   difference(){
@@ -167,11 +173,12 @@ module coverCutCylinder(d,h){
         cylinder(d=d,
                  h=h);
 }
-module CreateText(Text, Size, RotX, RoY, RotZ){
-  color("blue")
-    rotate(a=[RotX, RoY, RotZ])
-        linear_extrude(height=TextHeight)
-            text(Text,Size);
+module CreateText(Text, Size, RotX, RoY, RotZ){  
+  if (!debug)
+    color("blue")
+      rotate(a=[RotX, RoY, RotZ])
+          linear_extrude(height=TextHeight)
+              text(Text,Size);
 }
 
 module batteryHolder(){

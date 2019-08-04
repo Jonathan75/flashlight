@@ -25,6 +25,13 @@ TextHeight = 0.4;
 $fn = 50;
 diffMargin = 0.01;
 
+// AA box 58.05x16.58x13.59 try these values out
+//boxSizeWidth=  58.05 + 24; not long enough
+//boxSizeHeight = 14 + 6; //13.59 battery holder height
+//boxSizeDepth = 16.58 + 4.04; 
+//coverThickness = 4;
+
+
 printerErrorMargin = 0.5;
 boxWallThickness = 2;
 boxSizeWidth= 120;

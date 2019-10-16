@@ -1,4 +1,4 @@
-// original design  http://www.thingiverse.com/thing:1755428 
+// original design  http://www.thingiverse.com/thing:1755428
 t = .75;
 r = 1.057;
 switch_w = 5.9 * r;
@@ -28,7 +28,7 @@ diffMargin = 0.01;
 // AA box 58.05x16.58x13.59 try these values out
 //boxSizeWidth=  58.05 + 24; not long enough
 //boxSizeHeight = 14 + 6; //13.59 battery holder height
-//boxSizeDepth = 16.58 + 4.04; 
+//boxSizeDepth = 16.58 + 4.04;
 //coverThickness = 4;
 
 
@@ -36,7 +36,7 @@ printerErrorMargin = 0.5;
 boxWallThickness = 2;
 boxSizeWidth= 120;
 boxSizeHeight = 27-4;
-boxSizeDepth = 17.12 + 2 + 2.5; //batteryHolderWidth = 17.12 ;
+boxSizeDepth = 16.78 + 4 + 0.1; //batteryHolderWidth = 16.78 ;
 coverThickness = 4;
 LateralFontSize=10;
 TextHeight = 0.5;
@@ -45,9 +45,21 @@ TextLateral2 = ""; //side line 2
 TextCover1 = ""; //lid
 TextCover2 = ""; //lid line 2
 
+debug=false;
 
+if (debug) {
+    intersection(){
+      translate([0,50,0]) cube([25,10,25]);
+      boxWithHoles();
+    }
+  //batteryHolder();
+} else {
+    boxWithHoles();
+    translate([-boxSizeDepth-1,0,0]) cover(); //scale([.95,1,.99])
+}
+/*
 boxWithHoles();
-translate([-boxSizeDepth-1,0,0]) scale([.95,1,.99]) cover();
+translate([-boxSizeDepth-1,0,0]) scale([.95,1,.99]) cover(); */
 
 //batteryHolder();
 
@@ -169,21 +181,25 @@ module coverCutCylinder(d,h){
                  h=h);
 }
 module CreateText(Text, Size, RotX, RoY, RotZ){
+  debug=true;
+  if(!debug) {
     color("blue")
     rotate(a=[RotX, RoY, RotZ])
         linear_extrude(height=TextHeight)
             text(Text,Size);
+  }
 }
 
 module batteryHolder(){
-  w = 17.12;
+  w = 16.78;
   d = 57.24;
   h = 14.72;
-  
+
   // how wide? 17.12 + wall
-  
+
   x = boxSizeDepth*.5;
   y = (boxWallThickness + d * .5) + 50 ;
   z = boxWallThickness + h * .5;
-  translate([x,y,z]) cube([w,d,h], center=true);
+  color("blue")
+    translate([x,y,z]) cube([w,d,h], center=true);
   }

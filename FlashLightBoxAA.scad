@@ -181,7 +181,7 @@ module coverCutCylinder(d,h){
                  h=h);
 }
 module CreateText(Text, Size, RotX, RoY, RotZ){
-  debug=true;
+  //debug=true;
   if(!debug) {
     color("blue")
     rotate(a=[RotX, RoY, RotZ])
